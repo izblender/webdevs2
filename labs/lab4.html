@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <title>Towed Cars in IL</title>
+        <style>
+        </style>
+    </head>
+    <body class='center'>
+    
+        
+    <h1>Towed Cars in Illinois</h1>
+    <div>
+    <button class='btn' id='submit'>Find the Car Google Data</button>
+    </div>
+    <div id='results' class='center'></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+            /*
+                This script retrieves the towed data information
+                from the City of Chicago Data Portal
+                
+                You are required to enter the information for your vehicle
+                as a license plate number
+            
+            */
+            
+            var towedVehicle;
+            
+            $(function(){
+                
+                $("#submit").click(function(){
+                    
+                    var html = "";
+                    
+                    // base URL to the food inspections data
+                    var baseURL = 'https://data.cityofchicago.org/resource/rp42-fxjt.json';
+                    
+                    // optional filters we're appending - date range and zip
+                    var filters = "";
+                    
+                    // full URL
+                    var url = baseURL;
+                        
+                    $.getJSON(url).done (function (data) {
+                        // TODO:  add script to add data to the DOM
+                        console.log(data);
+                        // loop through the records
+                        
+                        towedVehicle = data;
+                        
+                        var date = towedVehicle[0].tow_date;
+
+                        var Acura = 0, Audi = 0, BMW = 0, Buic = 0, Chevrolet = 0, Ford = 0,Lexis = 0, oth = 0;
+                        
+                        if(towedVehicle.length == 0){
+                            html = "No Vehicle Reported";
+                        } else{
+                            $.each(towedVehicle, function(index, value){
+                                if(value.tow_date == date){
+                                    var make = value.make;
+                                    if (make == "ACUR")
+                                        Acura++;
+                                    else if(make == "AUDI")
+                                        Audi++;
+                                    else if(make == "BMW")
+                                        BMW++;
+                                    else if(make == "BUIC")
+                                        Buic++;
+                                    else if(make == "CHEV")
+                                        Chevrolet++;
+                                    else if(make == "FORD")
+                                        Ford++;
+                                    else if(make == "LEXS")
+                                        Lexis++;
+                                    else
+                                        oth++;
+                                }
+                            })  // end of .each loop
+                            
+                            /*html = "<p>Black: " + blk + "<br>" +
+                                    "White: " + whi + "<br>" +
+                                    "Grey: " + gry + "<br>" +
+                                    "Silver: " + sil + "<br>" +
+                                    "Green: " + grn + "<br>" +
+                                    "Blue: " + blu + "<br>" +
+                                    "Red: " + red + "</p>";*/
+                            // Load the Visualization API and the corechart package.
+                          google.charts.load('current', {'packages':['corechart']});
+                    
+                          // Set a callback to run when the Google Visualization API is loaded.
+                          google.charts.setOnLoadCallback(drawChart);
+                    
+                          // Callback that creates and populates a data table,
+                          // instantiates the pie chart, passes in the data and
+                          // draws it.
+                          function drawChart() {
+                    
+                            // Create the data table.
+                            var data = new google.visualization.DataTable();
+                            data.addColumn('string', 'Car color');
+                            data.addColumn('number', 'Quantity');
+                            data.addRows([
+                              ['Acura', Acura],
+                              ['Audi', Audi],
+                              ['BMW', BMW],
+                              ['Buic', Buic],
+                              ['Chevrolet', Chevrolet],
+                              ['Ford', Ford],
+                              ['Lexis', Lexis],
+                              ['Other', oth]
+                            ]);
+                    
+                            // Set chart options
+                            var options = {'title':'Towed cars by make on ' + date,
+                                           'width':800,
+                                           'height':600
+                            };
+                    
+                            // Instantiate and draw our chart, passing in some options.
+                            var chart = new google.visualization.PieChart(document.getElementById('results'));
+                            chart.draw(data, options);
+                          }
+                        }
+                        
+                        //$("#results").html(html);
+                        
+                    }) // end of getJSON function
+                    
+                })  // end of click function
+                
+            }) // end of ready command
+            
+            
+        </script>
+    </body>
+</html>
