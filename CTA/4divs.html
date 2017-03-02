@@ -50,6 +50,15 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <style>
+    .dropdown {
+    background-color: rgb(236,236,236);
+     padding: 14px;
+     font-size: 13px;
+     
+    }
+    #btn {
+      margin-left:30px;
+    }
     #view-source {
       position: fixed;
       display: block;
@@ -63,68 +72,41 @@
   </head>
   <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <header class="mdl-layout__header mdl-color--primary">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Isaac &amp; Bus Website</h3>
+          <h3>Bus Website</h3>
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="index.html" class="mdl-layout__tab is-active">Features</a>
+          <a href="index.html" class="mdl-layout__tab">Features</a>
           <a href="bustrack.html" class="mdl-layout__tab">Bus Track</a>
-          <a href='4divs.html' class="mdl-layout__tab">4 Divs Bus</a>
+          <a href='4divs.html' class="mdl-layout__tab is-active">4 Divs Bus</a>
         </div>
       </header>
       <main class="mdl-layout__content">
-        <div class="mdl-layout__tab-panel is-active" id="overview">
-          <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-            <div class="mdl-card mdl-cell mdl-cell--12-col">
-              <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
-                <h4 class="mdl-cell mdl-cell--12-col">Features</h4>
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                  <h5>Pages</h5>
-                  This webpage features 2 pages that are easy to navigate. First, <a href="#overview">this page</a> describes the features. The second page <a href="#features">tracks buses</a>.
-                </div>
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                  <h5>CTA API</h5>
-                  The bus tracking feature uses the CTA bus API to track where the routes are. You can find information about the API <a href="http://www.transitchicago.com/developers/bustracker.aspx" target="blank">here.</a>
-                </div>
-                <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                  <div class="section__circle-container__circle mdl-color--primary"></div>
-                </div>
-                <div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
-                  <h5>Code</h5>
-                  This website features coding of course! For example javascript and jQuery.
-                </div>
-              </div>
-            </div>
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="btn2">
-              <i class="material-icons">more_vert</i>
-            </button>
-          </section>
+        <div class="mdl-layout__tab-panel" id="overview">
           
 
         </div>
-        <div class="mdl-layout__tab-panel" id="features">
+        <div class="mdl-layout__tab-panel is-active" id="divs">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-cell mdl-cell--12-col" id='body2'>
+            <h2>Bus Tracking</h2>
+            <h5>Track The Different Western/Addison Routes!</h5>
+            <button id='btn' class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">Track</button>
             <div class="mdl-cell mdl-cell--12-col" id='body'>
             <script>
         $(function() {
-          
-          
+          $('#btn').click(function() {
+          $('#body').empty()
           var apiPassThruUrl = "https://polar-garden-75406.herokuapp.com/apiPassThru.php";
           
           var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";
-          
-          
+              console.log(stop)
+              
           $.ajax({
               url: apiPassThruUrl,
               dataType: "json",
@@ -132,21 +114,29 @@
               data: {"apiEndpoint": apiEndpoint,
                       "key" : "RPEcHRKDiF69SQc3EHjW42rYk",
                       "format":"json",
-                      "rt" : "49",
-                      "stpid" : "8195"
+                      "rt" : rt,
+                      "stpid" : stopid
               }
-            }).done (function (data) {
+            })
+          
+            .done (function (data) {
               console.log(data);
-              $("body").append("<h1>Bus Routes</h1>");
               
               $.each(data["bustime-response"]["prd"], function(i,v) {
-                  $("#body").append("Stop ID" + v.stpid + "<br>")
+                  $("#north").append(
+                      "<br><br>Route: " + v.stpnm + "<br>" +
+                      "Direction: " + v.rtdir + "<br>" +
+                      "Stop ID: " + v.stpid + "<br>" + 
+                      "ETA: " + v.prdtm  
+                      )
                 
               })
 
             });
+          
         });
-            
+      
+        });  
   
 </script>
             </div>
