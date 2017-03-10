@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Find Towed Cars in IL</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+        #skrrt {
+            padding: 30px;
+                background-color: #8B0000;
+                color: white;
+                margin: 0px;
+                border: 0px;
+        }
+        input {
+            
+        }
+        #iframe {
+            padding-top:10px;
+            height:80%;
+        }
+        #html {
+            height:500px;
+            text-align:center;
+        }
+        iframe {
+        height: 100%;
+        width: 90%;
+        display: block;
+        margin: auto;
+        }
+      /* Optional: Makes the sample page fill the window. */
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        }
+        body {
+        font: 20px Montserrat, sans-serif;
+        line-height: 1.8;
+        color: #f5f6f7;
+        width:100%;
+        }
+        p {font-size: 16px;}
+          .margin {margin-bottom: 45px;}
+          .bg-1 { 
+              background-color: #1abc9c; /* Green */
+              color: #ffffff;
+        }
+        .bg-2 { 
+              background-color: #474e5d; /* Dark Blue */
+              color: #ffffff;
+              text-align:left;
+              padding:20px;
+              
+        }
+        .bg-3 { 
+              background-color: #ffffff; /* White */
+              color: #555555;
+        }
+        .bg-4 { 
+              background-color: #2f2f2f; /* Black Gray */
+              color: #fff;
+        }
+        .container-fluid {
+              padding-top: 70px;
+              padding-bottom: 70px;
+        }
+        .navbar {
+              padding-top: 15px;
+              padding-bottom: 15px;
+              border: 0;
+              border-radius: 0;
+              margin-bottom: 0;
+              font-size: 12px;
+              letter-spacing: 5px;
+        }
+        .navbar-nav  li a:hover {
+              color: #1abc9c !important;
+        }
+        .GRN {
+                color:Green;
+            }
+            .GRY {
+                color:Grey;
+            }
+            .SIL {
+                color:Silver;
+            }
+            .BLK {
+                color:black;
+            }
+            .TAN {
+                color:tan;
+            }
+            .BLU {
+                color:lightblue;
+            }
+            .WHI {
+                color:white;
+            }
+            .MAR {
+                color:maroon;
+            }
+            .GLD {
+                color:gold;
+            }
+            .RED {
+                color:red;
+            }
+            .BGE {
+                color:beige;
+            }
+            .BRZ {
+                color:#cd7f32;
+            }
+            .ONG {
+                color:orange;
+            }
+            .PLE {
+                color:purple;
+            }
+            .BRO {
+                color:#a5492a;
+            }
+            #html {
+                margin-top:10px;
+            }
+            #btn {
+                color:black;
+                background-color:white;
+            }
+            #btn:hover {
+                background-color:lightgrey;
+                color:black;
+            }
+            #input {
+                color:black;
+            }
+        </style>
+        <!--css library-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id='skrrt'>
+        <h1>Find Your Towed Car</h1>
+        </div>
+        <div class='bg-2'>
+        <h4>Input your license plate and press the 'Find Your Car' button</h4>
+        <input type='text' placeholder='License Place #' id='input'>
+        <button id='btn'>Find Your Car</button>
+        </div>
+        <div id='empty'>
+        <div id="html"></div>
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        /*
+            This script retrieves 311 pothole service requests from the
+            City of Chicago Data Portal
+            
+            
+            This script doesn't update the DOM.
+        
+       
+        */
+    $('#btn').click(function(){
+        $('#html').empty()
+        var inspections;
+        var license = $('#input').val()
+        console.log(license)
+        // base URL to the food inspections data
+        var baseURL = 'https://data.cityofchicago.org/resource/rp42-fxjt.json';
+        
+        // optional filters we're appending - date range and zip
+        var filters = '?plate=' + license;
+        
+        // full URL
+        var url = baseURL + filters;
+        var html;
+        console.log (url);
+        $.getJSON(url)
+            .done (function(data) {
+                console.log(data)
+                inspections = data;
+                
+                
+                if (inspections.length==0){
+                     var html = 
+                         '<p>Sorry, there were no results.</p>'
+                         $('#html').append(html)
+                         }
+                else {
+             $.each(data, function(index, value) {
+                    var str = value.tow_facility_phone;
+                    var res = str.replace(/[()-]/g,'').replace(' ','');
+                    var html = '<div id="iframe"><iframe src="//www.google.com/maps/embed/v1/place?q=' + value.towed_to_address +'&zoom=15&key=AIzaSyDDuRUPt247zE9zMvcot049QWlW6WzPjdw"></iframe></div>' +
+                    '<div class='+ value.color + '><h1>Make: ' + value.make + '</h1>' + 
+                    '<p>Color: ' + value.color + '<br>' + 'License Plate: ' + value.plate + '<br>' +
+                    'Towed To: ' + value.towed_to_address + '<br>'+ 'Call Them Here: ' + '<a href="tel:+"' + res + '>Click Me!</a>' +
+                    '<br>' + 
+                    '</p>' +
+                    '</div>';
+                    $('#html').append(html);
+        });
+        
+                }
+            });
+    });
+    
+    </script>
+    </div>
+    </body>
+</html>

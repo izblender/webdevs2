@@ -79,7 +79,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading" style="color:white">Welcome</h1>
+                        <span class="brand-heading" style="color:white" id="sometext">Welcome</span>
+                        
                         <p class="intro-text">To a page of my works</p>
                         <a href="#about" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
@@ -92,14 +93,33 @@
 
     <!-- About Section -->
     <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
+      
+            <div class="col-lg-4">
+                <h2>Featured Project</h2>
+                <h3>Towed Car Tracker</h3>
+                <p>The site uses the yelp API, made by Angel, Fay, Alexis, and me. You can find it <a href="projects/1/index.html">here</a>.</p>
+                <p>This API allows the user to search for resteraunts around chicago, or even search nearby using geolocation.</p>
+             
+            </div>
+        
+        
+            <div class="col-lg-4">
+                <h2>Featured Project</h2>
+                <h3>CTA Bus Tracker</h3>
+                <p>The site uses the yelp API, made by Angel, Fay, Alexis, and me. You can find it <a href="projects/1/index.html">here</a>.</p>
+                <p>This API allows the user to search for resteraunts around chicago, or even search nearby using geolocation.</p>
+
+            </div>
+    
+        
+            <div class="col-lg-4">
                 <h2>Featured Project</h2>
                 <h3>Yelp API</h3>
                 <p>The site uses the yelp API, made by Angel, Fay, Alexis, and me. You can find it <a href="projects/1/index.html">here</a>.</p>
-                <p>This API allows the user to search for resteraunts around chicago, or even search nearbye using geolocation.</p>
+                <p>This API allows the user to search for resteraunts around chicago, or even search nearby using geolocation.</p>
+                
             </div>
-        </div>
+        
     </section>
 
     <!-- Map Section -->
@@ -113,6 +133,7 @@
             </a>
         </div>
     </footer>
+    
 
     <!-- jQuery -->
     <script src="welcome/vendor/jquery/jquery.js"></script>
@@ -128,6 +149,63 @@
 
     <!-- Theme JavaScript -->
     <script src="welcome/js/grayscale.min.js"></script>
+    <script>
+        jQuery.fn.decodeEffect = (function ($) {
+    var defaultOptions = {
+        duration:      3000,
+        stepsPerGlyph: 10,
+        codeGlyphs:    "ABCDEFGHIJKLMNOPQRSTUWVXYZ1234567890",
+        className:     "code"
+    };
+    
+    // get a random string from the given set,
+    // or from the 33 - 125 ASCII range
+    function randomString(set, length) {
+        var string = "", i, glyph;
+        for(i = 0 ; i < length ; i++) {
+            glyph = Math.random() * set.length;
+            string += set[glyph | 0];
+        }
+        return string;
+    }
+    
+    // this function starts the animation. Basically a closure
+    // over the relevant vars. It creates a new separate span
+    // for the code text, and a stepper function that performs
+    // the animation itself
+    function animate(element, options) {
+        var text = element.text(),
+            span = $("<span/>").addClass(options.className).insertAfter(element),
+            interval = options.duration / (text.length * options.stepsPerGlyph),
+            step = 0,
+            length = 0,
+            stepper = function () {
+                if(++step % options.stepsPerGlyph === 0) {
+                    length++;
+                    element.text(text.slice(0, length));
+                }
+                if(length <= text.length) {
+                    span.text(randomString(options.codeGlyphs, text.length - length));
+                    setTimeout(stepper, interval);
+                } else {
+                    span.remove();
+                }
+            };
+        element.text("");
+        stepper();
+    }
+    
+    // Basic jQuery plugin pattern
+    return function (options) {
+        options = $.extend({}, defaultOptions, (options || {}));
+        return this.each(function () {
+            animate($(this), options);
+        });
+    };
+}(jQuery));
+
+$("#sometext").decodeEffect();
+    </script>
 
 </body>
 
