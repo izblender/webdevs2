@@ -5,7 +5,11 @@
  */
  
 .code { color: red;
-        text-transform: uppercase}
+        text-transform: uppercase;
+        font-size:65px;
+        
+  
+}
 body {
   width: 100%;
   height: 100%;
