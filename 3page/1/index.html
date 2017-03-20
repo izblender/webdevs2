@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<!--Designed by Angel, Isaac, Fay, and Alexis-->
+<head>
+  <title>Material Yelp</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+
+  <style>
+    main {
+      margin-top: 30px;
+    }
+    
+    .progress {
+      background-color: #ccc;
+    }
+    
+    .progress .indeterminate {
+      background-color: turquoise;
+    }
+  
+    
+    
+    /* */
+    
+     ::-webkit-scrollbar-track {
+      background-color: turquoise;
+    }
+    
+     ::-webkit-scrollbar {
+      width: 10px;
+      background-color: turquoise;
+    }
+    
+     ::-webkit-scrollbar-thumb {
+      background-color: turquoise;
+    }
+    /* Sticky footer */
+    
+    body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+      background-color:rgb(238,238,238);
+    }
+    
+    main {
+      flex: 1 0 auto;
+    }
+    
+    .input-field input[type=text]:focus+label {
+      color: turquoise;
+    }
+    
+    .input-field input[type=text]:focus {
+      border-bottom: 1px solid turquoise;
+      box-shadow: 0 1px 0 0 turquoise;
+    }
+    
+    .bettercolor {
+      background-color: turquoise;
+    }
+    
+    .modal.bottom-sheet {
+      max-height: 100%;
+    }
+    
+    #loader, #moreBtn {
+      display: none;
+    }
+    .turquoise {
+      background-color: turquoise
+    }
+    #turquoise {
+      background-color:turquoise;
+    }
+    /* https://benmarshall.me/responsive-iframes/ */
+    
+    .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 35px;
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+footer {
+  margin-top: 30px;
+}
+    
+    
+
+  </style>
+  <!--jQuery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+  <script src="OAuth.js"></script>
+  <script src="SHA1.js"></script>
+
+</head>
+
+<body>
+  <!-- Modalspace -->
+  
+  <div id="infoModal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h4 id="placetitle">{Place Title}</h4>
+      
+      <div class="card-panel black-text"> 
+      <h3>Review</h3>
+      <p id="placeinfo"></p> 
+      </div>
+      
+      <div class="row center">
+        
+        <div class="col s12 m4">
+          <p id="address"></p>
+        </div>
+        
+        <div class="col s12 m4">
+          <p id="number"></p>
+        </div>
+        
+        <div class="col s12 m4">
+          <div><a id="web" class="btn red waves-effect waves-light" target="_blank" href="">Visit on Yelp</a>  </div>
+        </div>
+        
+      </div>
+      
+      
+       <div class="center">
+      <div class="preloader-wrapper big active" id="loadermap">
+    <div class="spinner-layer spinner-red-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div></div>
+      
+      
+      
+      <div class="video-container">
+        
+        
+        <iframe style="border:0" src="" allowfullscreen id="map"></iframe>
+        
+      </div>
+      
+      
+      
+    </div>
+    <div class="modal-footer">
+      <a href="#" class=" modal-action modal-close waves-effect waves-dark btn-flat">Close</a>
+    </div>
+  </div>
+  
+  <!-- -->
+  <header>
+    <nav class="turquoise darken-2">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo center" id="logo-title">Material Yelp</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="yelpInput" type="text">
+          <label for="yelpInput" id="searchlabel">Search by City, Town, Zip Code, or Place</label>
+        </div>
+        <div class="col s12 center">
+          <button id="btn" class="waves-effect waves-light orange darken-2 btn" style="margin-top: 20px">Search</button>
+          <button id="btn2" class="waves-effect waves-light yellow darken-2 btn" style="margin-top: 20px">Near Me</button>
+        </div>
+      </div>
+     
+      
+     
+      
+      
+      <div class="container" id="main">
+       
+       
+        
+      </div>
+      
+      
+       
+      <div class="center">
+      <div class="preloader-wrapper big active" id="loader">
+    <div class="spinner-layer spinner-red-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div><div class="gap-patch">
+        <div class="circle"></div>
+      </div><div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div></div>
+      
+      
+      <div class="center"><button class="btn waves-effect waves-light light-blue" id="moreBtn">Load More</button></div>
+    </div>
+  </main>
+  
+  <footer class="page-footer" style="padding:0" id='turquoise'>
+        
+        
+        <div class="footer-copyright">
+            <div class="container">
+            Created by Isaac © 2017
+            </div>
+          </div>
+          
+        </footer>
+  
+  <script src="core.js"></script>
+
+</body>
+
+</html>
