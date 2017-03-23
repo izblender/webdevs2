@@ -1,0 +1,15 @@
+{
+  "short_name": "3 Page App",
+  "name": "3 Page App",
+  "icons": [
+    {
+      "src":"blenderIcon.jpg",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/?utm_source=homescreen",
+  "background_color": "",
+  "Theme_color": "",
+  "display": "standalone"
+}

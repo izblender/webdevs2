@@ -156,9 +156,10 @@
               
               $.each(data["bustime-response"]["prd"], function(i,v) {
                   $("#body").append(
-                      "<br><br>Route: " + v.stpnm + "<br>" +
+                      "<br><br>Stop: " + v.stpnm + "<br>" +
                       "Direction: " + v.rtdir + "<br>" +
                       "Stop ID: " + v.stpid + "<br>" + 
+                      "Route #: " + v.rt + "<br>" +
                       "ETA: " + v.prdtm  
                       )
                 
