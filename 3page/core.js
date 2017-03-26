@@ -390,11 +390,11 @@
     }
       
       
-      var near = 'Chicago, IL';
+      var near = $('#yelpInput').val();
       var limit = '10';
 
       var parameters = [];
-      parameters.push(['term', terms]);
+      parameters.push(['term', 'Hotels']);
       parameters.push(['offset', offset]);
       parameters.push(['limit', limit]);
       parameters.push(['location', near]);
@@ -504,19 +504,19 @@
     $("#loader").css("display", "inline-block");
 
 
-    var terms = $('#yelpInput').val();
-    currentTerm = terms;
-    if (terms == "") {
+    var nears = $('#yelpInput').val();
+    currentTerm = nears;
+    if (nears == "") {
       alert("You didn't enter anything!");
       $("#loader").hide();
 
       return;
     }
-    var near = 'Chicago, IL';
+    var near = nears;
     var limit = '10';
 
     var parameters = [];
-    parameters.push(['term', terms]);
+    parameters.push(['term', 'hotel']);
     parameters.push(['limit', limit]);
     parameters.push(['location', near]);
     parameters.push(['callback', 'cb']);
@@ -576,7 +576,7 @@
             var address = data.businesses[i].location.address[0];
           }
           var html =
-            '<div class="card horizontal">' +
+            '<div class="container">' +
             '<div class="card-image">' +
             '<img src=' + imgUrl + '>' +
             '</div>' +
