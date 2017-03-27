@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+      <!-- Include Dexie -->
+      <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+
+      <script>
+      $('#btn').click(function() {
+        
+      
+          //
+          // Define your database
+          //
+          var db = new Dexie("bus_database");
+          db.version(1).stores({
+              //friends: 'name,shoeSize'
+              bus: 'rt,direction'
+          });
+
+          //
+          // Put some data into it
+          //
+          var rts = $('#try').val()
+          var directions = $('#test').val()
+          db.bus.put({rt: rts, direction: directions}).then (function(){
+              //
+              // Then when data is stored, read from it
+              //
+              return db.bus.get('rts');
+          }).then(function (friend) {
+              //
+              // Display the result
+              //
+              console.log(bus)
+             //
+             // Finally don't forget to catch any error
+             // that could have happened anywhere in the
+             // code blocks above.
+             //
+             alert ("Ooops: " + error);
+          });
+      })
+      </script>
+  </head>
+  <body>
+    
+    <form action="#">
+          <h4>Origin</h4>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="test">
+    <label class="mdl-textfield__label" for="origin">rt</label>
+  </div>
+</form>
+<br>
+<form action="#">
+  <h4>Destination</h4>
+  <div class="mdl-textfield mdl-js-textfield">
+    <input class="mdl-textfield__input" type="text" id="try">
+    <label class="mdl-textfield__label" for="dest">destination</label>
+  </div>
+</form>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="mapBtn">
+  Search
+</button>
+  </body>
+</html>
