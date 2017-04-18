@@ -56,9 +56,13 @@
      padding: 14px;
      font-size: 13px;
      
+     
     }
     #btn {
       margin-left:30px;
+    }
+    #direct {
+      
     }
     #view-source {
       position: fixed;
@@ -77,15 +81,11 @@
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-          <h3>Bus Website</h3>
+          <em><h2>FastTrak</h2></em>
         </div>
         <div class="mdl-layout--large-screen-only mdl-layout__header-row">
         </div>
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
-          <a href="index.html" class="mdl-layout__tab">Features</a>
-          <a href="#features" class="mdl-layout__tab is-active">Bus Track</a>
-          <a href='4divs.html' class="mdl-layout__tab">4 Divs Bus</a>
-        </div>
+        
       </header>
       <main class="mdl-layout__content">
         <div class="mdl-layout__tab-panel" id="overview">
@@ -95,8 +95,8 @@
         <div class="mdl-layout__tab-panel is-active" id="features">
           <section class="section--center mdl-grid mdl-grid--no-spacing">
             <div class="mdl-cell mdl-cell--12-col" id='body2'>
-            <h2>Bus Tracking</h2>
-            <h5>Track The Different Western/Addison Routes!</h5>
+            
+            
             <select id='direct' class='dropdown'>
               <option>Please Choose Direction</option>
               <option id='north'>Northbound</option>
@@ -116,31 +116,7 @@
           
           var apiEndpoint = "http://ctabustracker.com/bustime/api/v2/getpredictions";
           
-              var stop = $('#direct').val()
-              if (stop == "Southbound") {
-                var stopchoice = '8195'
-                var routechoice = '49'
-              }
-              else if (stop == "Northbound") {
-                var stopchoice = '8417'
-                var routechoice = '49'
-                
-              }
-              else if (stop == "Westbound") {
-                var stopchoice = '12569'
-                var routechoice = '152'
-              }
-              else if (stop == "Eastbound") {
-                var stopchoice = '12527'
-                var routechoice = '152'
-              }
-              else if (stop == "Please Choose Direction") {
-                alert("Please Choose A Direction")
-              }
-              console.log(stop)
-              var stopid=stopchoice
-              var rt = routechoice
-              console.log(stopid)
+              
           $.ajax({
               url: apiPassThruUrl,
               dataType: "json",
@@ -158,11 +134,7 @@
               
               $.each(data["bustime-response"]["prd"], function(i,v) {
                   $("#body").append(
-                      "<br><br>Stop: " + v.stpnm + "<br>" +
-                      "Direction: " + v.rtdir + "<br>" +
-                      "Stop ID: " + v.stpid + "<br>" + 
-                      "Route #: " + v.rt + "<br>" +
-                      "ETA: " + v.prdtm  
+                      
                       )
                 
               })

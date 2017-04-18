@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lab 8</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+            <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+            <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+            
+            <style>
+                #card {
+                  padding:15px;
+                  margin:30px;
+                  
+                }
+                body {
+                  background-color:#f1f1f1;
+                }
+                #grad {
+                  background: red; /* For browsers that do not support gradients */
+                  background: -webkit-gradient(linear, 0 0, 100% 100%, from(red), to(yellow));
+                  background: -webkit-linear-gradient(left top, red, yellow);
+                  background: -moz-linear-gradient(left top, red, yellow);
+                  background: -o-linear-gradient(left top, red, yellow);
+                  background: linear-gradient(left top, red, yellow); /* For Safari 5.1 to 6.0 */ /* For Opera 11.1 to 12.0 */ /* For Firefox 3.6 to 15 */ /* Standard syntax */
+                }
+                #grad2 {
+    background: red; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(red, yellow); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(red, yellow); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(red, yellow); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(red, yellow); /* Standard syntax */
+            }
+
+            .demo-card-square.mdl-card {
+              width: 320px;
+              height: 320px;
+            }
+            .demo-card-square > .mdl-card__title {
+              color: #fff;
+              
+            }
+
+            </style>
+    </head>
+    <body>
+        <!-- Simple header with fixed tabs. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header
+            mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header" id="grad">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Title</span>
+    </div>
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" id="grad">
+      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Tab 1</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab">Tab 2</a>
+      <a href="#fixed-tab-3" class="mdl-layout__tab">Tab 3</a>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer" id="grad2">
+    <span class="mdl-layout-title">Title</span>
+  </div>
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content" id="1"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+      <div class="page-content"><!-- Your content goes here --></div>
+    </section>
+  </main>
+</div>
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+
+    <script>
+        var db = new Dexie("employeeDB");
+
+        db.version(1).stores({
+            employees: '++id, name, department, title, salary'
+        });
+
+        db.open().catch(function(error) {
+            alert('oh hey there : ' + error);
+            console.log(error);
+        });
+        
+        /*
+            This script retrieves 311 pothole service requests from the
+            City of Chicago Data Portal
+            
+            
+            This script doesn't update the DOM.
+        
+        
+        */
+        // base URL to the 
+        var baseURL = 'https://data.cityofchicago.org/resource/tt4n-kn4t.json';
+        
+        // optional filters we're appending - date range and zip
+        var filters = ''
+        
+        // full URL
+        var url = baseURL + filters;
+        
+        console.log (url);
+        $.getJSON(url)
+            .done (function(data) {
+                console.log(data)
+          //
+          // Define your database
+          //
+          
+
+          //
+          // Put some data into it
+          //
+          //db.employees.add();
+        
+        db.employees.count().then(function(count) {
+          if (count==0) {
+        $.each(data, function(index, v) {
+          //var html = 
+          //$('body').append(html)
+          //console.log(v.name)
+          db.employees.put({
+                    name: v.name,
+                    salary: v.employee_annual_salary,
+                    title: v.job_titles,
+                    department: v.department
+          }).catch(function(error) {
+              alert("Ooops: " + error);
+              console.log(error);
+          });
+        })
+      }
+      else {
+        console.log(count)
+        db.employees.each(function(em) {
+          var html = "<div><div class='w3-container w3-blue' id='card'>" +
+  "<h1>" + em.name + "</h1>" +
+  "<p>Job: " +  em.department  +".</p>" +
+"</div><br></div>"
+          $('#1').append(html)
+        })
+      }
+        })
+        
+    })
+        
+        
+    </script>
+    </body>
+</html>
