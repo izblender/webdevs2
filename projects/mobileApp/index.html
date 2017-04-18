@@ -144,7 +144,7 @@
         if (isSignedIn) {
           authorizeButton.style.display = 'none';
           signoutButton.style.display = 'block';
-          listLabels();
+          getMessage()
         } else {
           authorizeButton.style.display = 'block';
           signoutButton.style.display = 'none';
@@ -191,7 +191,7 @@
  */
 function getMessage(userId, messageId, callback) {
   var request = gapi.client.gmail.users.messages.get({
-    'userId': userId,
+    'userId': 'me',
     'id': messageId
   });
   request.execute(callback);
