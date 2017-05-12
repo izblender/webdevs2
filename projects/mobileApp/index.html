@@ -18,11 +18,16 @@
 <html lang="en">
 
 <head>
+  
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Hub</title>
+  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <!--Add the new slick-theme.css if you want the default styling-->
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+				
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -49,7 +54,78 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-orange.min.css">
   <link rel="stylesheet" href="styles.css">
+  
+
+
+				
   <style>
+  /* Makes images fully responsive */
+
+.img-responsive,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ------------------- Carousel Styling ------------------- */
+
+.carousel-inner {
+  border-radius: 15px;
+}
+
+.carousel-caption {
+  background-color: rgba(0,0,0,.5);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 0 0 10px 25px;
+  color: #fff;
+  text-align: left;
+}
+
+.carousel-indicators {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  z-index: 15;
+  margin: 0;
+  padding: 0 25px 25px 0;
+  text-align: right;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+}
+
+
+/* ------------------- Section Styling - Not needed for carousel styling ------------------- */
+
+.section-white {
+   padding: 10px 0;
+}
+
+.section-white {
+  background-color: #fff;
+  color: #555;
+}
+
+@media screen and (min-width: 768px) {
+
+  .section-white {
+     padding: 1.5em 0;
+  }
+
+}
+
     #skyconDiv {
       float: left;
       
@@ -154,9 +230,9 @@
             
           </div>
         </div>
-        <div class="mdl-card amazing mdl-cell mdl-cell--8-col" >
+        <div class="mdl-card amazing mdl-cell mdl-cell--6-col" >
   <div class="mdl-card__title mdl-card--expand">
-    <iframe src="https://calendar.google.com/calendar/embed?src=lanetechcollegeprep%40gmail.com&ctz=America/Chicago" style="border: 0" width="800" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://calendar.google.com/calendar/embed?src=lanetechcollegeprep%40gmail.com&ctz=America/Chicago" style="border: 0" width="600" height="400" frameborder="0" scrolling="no"></iframe>
   </div>
   <div class="mdl-card__actions mdl-card--border">
     
@@ -175,7 +251,8 @@
                                             This script doesn't update the DOM.
                               
                                         */
-                var pos;
+                var pos1;
+                var pos2;
 
                 function getLocation() {
                   if (navigator.geolocation) {
@@ -188,16 +265,28 @@
 
                 function showPosition(position) {
 
-                  pos = position.coords.latitude + ',' + position.coords.longitude;
-                  console.log(pos)
+                  pos1 = position.coords.latitude;
+                  pos2 = position.coords.longitude;
+                  //console.log(pos)
+                  function initMap() {
+                      var uluru = {lat: pos1, lng: pos2};
+                      var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 15,
+                        center: uluru
+                      });
+                      var marker = new google.maps.Marker({
+                        position: uluru,
+                        map: map
+                      });
+                    }
                   $('#html').empty()
-                  
+                  initMap()
 
                   // base URL to the food inspections data
                   var baseURL = 'https://api.darksky.net/forecast/55801beea814ed1f3aeed49947a5e5bb/';
 
                   // optional filters we're appending - date range and zip
-                  var filters = pos;
+                  var filters = pos1 + "," + pos2;
 
                   // full URL
                   var url2 = baseURL + filters;
@@ -245,21 +334,37 @@
 
                 }));
               </script>
-        <div class="mdl-card on-the-road-again mdl-cell mdl-cell--14-col">
-          <div class="mdl-card__media mdl-color-text--grey-50">
-            <h3><a href="entry.html">On the road again</a></h3>
-          </div>
-          <div class="mdl-color-text--grey-600 mdl-card__supporting-text">
-            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
-          </div>
-          <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-            
-            <div>
-              <strong>The Newist</strong>
-              <span>2 days ago</span>
-            </div>
-          </div>
-        </div>
+              <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhQx1wEy9bRGfblYYl6ZKCxocxkIN8Wgc&callback=initMap">
+    </script>
+        <div class="mdl-card on-the-road-again mdl-cell mdl-cell--6-col">
+          <!-- Textfield with Floating Label -->
+<h4>Text - To - Speech</h1>
+<form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="voiceIn">
+    <label class="mdl-textfield__label" for="voiceIn">Talk to me!</label>
+    
+  </div>
+  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="voice">
+  Button
+</button>
+</form>
+<!-- Raised button with ripple -->
+
+          <!--<div class=".single-item">
+    <div><img src="images/lane1.png"></div>
+    <div><img src="images/lane2.png"></div>
+    <div><img src="images/lane3.png"></div>
+  </div>-->
+<script type="text/javascript">
+    $("#voice").click(function(){
+      //$('.single-item').slick()
+      var voice = $('#voiceIn').val()
+      responsiveVoice.speak(voice, "UK English Male", {volume: 2});
+    });
+  </script>
+         </div>
         <div id='orignews' class="mdl-card amazing mdl-cell mdl-cell--12-col">
           <div class="mdl-color-text--grey" style="margin:30px">
             <h3 style="color:black">News</h3>
@@ -271,7 +376,11 @@
           </div>
           <script>
             // Built by LucyBot. www.lucybot.com
-var urlNew = "https://api.nytimes.com/svc/archive/v1/2017/4.json";
+            var d = new Date();
+            var n = d.getMonth();
+            var a = n + 1;
+            console.log(a)
+var urlNew = "https://api.nytimes.com/svc/archive/v1/2017/" + a  + ".json";
 urlNew += '?' + $.param({
   'api-key': "12892250905f43b38ea09fbf0982fc77"
 });
@@ -311,20 +420,14 @@ $.ajax({
           
         </div>
         <div class="mdl-card shopping mdl-cell mdl-cell--12-col" id="shop">
-          <div class="mdl-card__media mdl-color-text--grey-50">
-            <h3><a href="entry.html">Shopping</a></h3>
-          </div>
-          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-            Enim labore aliqua consequat ut quis ad occaecat aliquip incididunt. Sunt nulla eu enim irure enim nostrud aliqua consectetur ad consectetur sunt ullamco officia. Ex officia laborum et consequat duis.
-          </div>
-          <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-            <div class="minilogo"></div>
-            <div>
-              <strong>The Newist</strong>
-              <span>2 days ago</span>
-            </div>
-          </div>
+          <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    
+    
         </div>
+        <script>
+          //AIzaSyAhQx1wEy9bRGfblYYl6ZKCxocxkIN8Wgc
+        </script>
         <nav class="demo-nav mdl-cell mdl-cell--12-col">
           <div class="section-spacer"></div>
           
@@ -366,7 +469,10 @@ $.ajax({
         window.location = 'https://www.youtube.com/channel/UCnrqCVMJ5tz7NOvnQkQDwFA'
     })
   </script>
-
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+			<script src='//vws.responsivevoice.com/v/e?key=7MJGTxUL'></script>	
 </body>
 <script>
   Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {
