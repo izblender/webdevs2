@@ -88,7 +88,9 @@
   color: #fff;
   text-align: left;
 }
-
+#textospeech {
+  padding:15px;
+}
 .carousel-indicators {
   position: absolute;
   bottom: 0;
@@ -271,7 +273,7 @@
                   function initMap() {
                       var uluru = {lat: pos1, lng: pos2};
                       var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 15,
+                        zoom: 17,
                         center: uluru
                       });
                       var marker = new google.maps.Marker({
@@ -339,6 +341,7 @@
     </script>
         <div class="mdl-card on-the-road-again mdl-cell mdl-cell--6-col">
           <!-- Textfield with Floating Label -->
+          <div id="texttospeech">
 <h4>Text - To - Speech</h1>
 <form action="#">
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -347,7 +350,7 @@
     
   </div>
   <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="voice">
-  Button
+  Speek
 </button>
 </form>
 <!-- Raised button with ripple -->
@@ -364,6 +367,7 @@
       responsiveVoice.speak(voice, "UK English Male", {volume: 2});
     });
   </script>
+  </div>
          </div>
         <div id='orignews' class="mdl-card amazing mdl-cell mdl-cell--12-col">
           <div class="mdl-color-text--grey" style="margin:30px">
