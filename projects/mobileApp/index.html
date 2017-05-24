@@ -18,16 +18,16 @@
 <html lang="en">
 
 <head>
-  
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   <title>Hub</title>
-  <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  <link rel="stylesheet" type="text/css" href="slick/slick.css" />
   <!--Add the new slick-theme.css if you want the default styling-->
-<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-				
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
+
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -54,89 +54,87 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.grey-orange.min.css">
   <link rel="stylesheet" href="styles.css">
-  
 
 
-				
+
+
   <style>
-  /* Makes images fully responsive */
-
-.img-responsive,
-.thumbnail > img,
-.thumbnail a > img,
-.carousel-inner > .item > img,
-.carousel-inner > .item > a > img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* ------------------- Carousel Styling ------------------- */
-
-.carousel-inner {
-  border-radius: 15px;
-}
-
-.carousel-caption {
-  background-color: rgba(0,0,0,.5);
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 10;
-  padding: 0 0 10px 25px;
-  color: #fff;
-  text-align: left;
-}
-#textospeech {
-  padding:15px;
-}
-.carousel-indicators {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  width: 100%;
-  z-index: 15;
-  margin: 0;
-  padding: 0 25px 25px 0;
-  text-align: right;
-}
-
-.carousel-control.left,
-.carousel-control.right {
-  background-image: none;
-}
-
-
-/* ------------------- Section Styling - Not needed for carousel styling ------------------- */
-
-.section-white {
-   padding: 10px 0;
-}
-
-.section-white {
-  background-color: #fff;
-  color: #555;
-}
-
-@media screen and (min-width: 768px) {
-
-  .section-white {
-     padding: 1.5em 0;
-  }
-
-}
-
+    /* Makes images fully responsive */
+    
+    .img-responsive,
+    .thumbnail>img,
+    .thumbnail a>img,
+    .carousel-inner>.item>img,
+    .carousel-inner>.item>a>img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    /* ------------------- Carousel Styling ------------------- */
+    
+    .carousel-inner {
+      border-radius: 15px;
+    }
+    
+    .carousel-caption {
+      background-color: rgba(0, 0, 0, .5);
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      padding: 0 0 10px 25px;
+      color: #fff;
+      text-align: left;
+    }
+    
+    #textospeech {
+      padding: 15px;
+    }
+    
+    .carousel-indicators {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      width: 100%;
+      z-index: 15;
+      margin: 0;
+      padding: 0 25px 25px 0;
+      text-align: right;
+    }
+    
+    .carousel-control.left,
+    .carousel-control.right {
+      background-image: none;
+    }
+    /* ------------------- Section Styling - Not needed for carousel styling ------------------- */
+    
+    .section-white {
+      padding: 10px 0;
+    }
+    
+    .section-white {
+      background-color: #fff;
+      color: #555;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .section-white {
+        padding: 1.5em 0;
+      }
+    }
+    
     #skyconDiv {
       float: left;
-      
     }
+    
     #weather {
-      font-size:25px;
-      margin-left:12px;
-      font-weight:100!important;
+      font-size: 25px;
+      margin-left: 12px;
+      font-weight: 100!important;
     }
+    
     #view-source {
       position: fixed;
       display: block;
@@ -153,7 +151,7 @@
     
     #promotion {
       text-decoration: none;
-      font-size:8px;
+      font-size: 8px;
     }
     
     #header6 {
@@ -169,28 +167,28 @@
       line-height: 0.01;
       margin-left: 500px;
     }
-    #header6{
-         margin-left: initial;
-         font-size: 100px;
-      
-       }
-    @media (max-width: 1395px) {
-       
+    
+    #header6 {
+      margin-left: initial;
+      font-size: 100px;
     }
+    
+    @media (max-width: 1395px) {}
     
     #weather_icon {
       display: none;
     }
+    
     news {
-      margin:30px;
-      padding:30px;
+      margin: 30px;
+      padding: 30px;
     }
   </style>
- 
+
 </head>
 
 <body>
-  
+
   <div class="demo-blog mdl-layout mdl-js-layout has-drawer is-upgraded">
     <main class="mdl-layout__content">
       <h1 id="header6">welcome</h1>
@@ -202,178 +200,181 @@
             <h3 id="angelCode">Weather</h3>
           </div>
           <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-            
-            
-           
-           
-      
-       <div id="weather">
-         
+
+
+
+
+
+            <div id="weather">
+
               <button class="mdl-button mdl-js-button mdl-button--raised" id="btn" style="background-color:lightgreen">
                 Get current location
               </button>
 
 
 
-              
+
               <p id="promotion"><em><a href="https://darksky.net/forecast/">Powered By Darksky</a><br>This should only take a few seconds.</em></p>
-              </div>
-              
-              <div class="cssload-loader" style="display:none">
-            	<div class="cssload-flipper">
-            		<div class="cssload-front"></div>
-            		<div class="cssload-back"></div>
-            	</div>
             </div>
-            
-              <div id='skyconDiv'><canvas id="weather_icon" width="64" height="64"></canvas></div>
-              
-              
-            
+
+            <div class="cssload-loader" style="display:none">
+              <div class="cssload-flipper">
+                <div class="cssload-front"></div>
+                <div class="cssload-back"></div>
+              </div>
+            </div>
+
+            <div id='skyconDiv'><canvas id="weather_icon" width="64" height="64"></canvas></div>
+
+
+
           </div>
         </div>
-        <div class="mdl-card amazing mdl-cell mdl-cell--6-col" >
-  <div class="mdl-card__title mdl-card--expand">
-    <iframe src="https://calendar.google.com/calendar/embed?src=lanetechcollegeprep%40gmail.com&ctz=America/Chicago" style="border: 0" width="600" height="400" frameborder="0" scrolling="no"></iframe>
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    
-  </div>
-</div>
+        <div class="mdl-card amazing mdl-cell mdl-cell--6-col">
+          <div class="mdl-card__title mdl-card--expand">
+            <iframe src="https://calendar.google.com/calendar/embed?src=lanetechcollegeprep%40gmail.com&ctz=America/Chicago" style="border: 0" width="600" height="400" frameborder="0" scrolling="no"></iframe>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+
+          </div>
+        </div>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-               <script src="skycons.js"></script>
-              <script>
-              
-                /*
-                                            This script retrieves 311 pothole service requests from the
-                                            City of Chicago Data Portal
-                                            
-                                            
-                                            This script doesn't update the DOM.
-                              
-                                        */
-                var pos1;
-                var pos2;
+        <script src="skycons.js"></script>
+        <script>
+          /*
+                                                                This script retrieves 311 pothole service requests from the
+                                                                City of Chicago Data Portal
+                                                                
+                                                                
+                                                                This script doesn't update the DOM.
+                                                  
+                                                            */
+          var pos1;
+          var pos2;
 
-                function getLocation() {
-                  if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(showPosition);
-                  }
-                  else {
-                    alert("Geolocation doesn't work")
-                  }
-                }
+          function getLocation() {
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(showPosition);
+            }
+            else {
+              alert("Geolocation doesn't work")
+            }
+          }
 
-                function showPosition(position) {
+          function showPosition(position) {
 
-                  pos1 = position.coords.latitude;
-                  pos2 = position.coords.longitude;
-                  //console.log(pos)
-                  function initMap() {
-                      var uluru = {lat: pos1, lng: pos2};
-                      var map = new google.maps.Map(document.getElementById('map'), {
-                        zoom: 17,
-                        center: uluru
-                      });
-                      var marker = new google.maps.Marker({
-                        position: uluru,
-                        map: map
-                      });
-                    }
-                  $('#html').empty()
-                  initMap()
+            pos1 = position.coords.latitude;
+            pos2 = position.coords.longitude;
+            //console.log(pos)
+            function initMap() {
+              var uluru = {
+                lat: pos1,
+                lng: pos2
+              };
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 17,
+                center: uluru
+              });
+              var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+              });
+            }
+            $('#html').empty()
+            initMap()
 
-                  // base URL to the food inspections data
-                  var baseURL = 'https://api.darksky.net/forecast/55801beea814ed1f3aeed49947a5e5bb/';
+            // base URL to the food inspections data
+            var baseURL = 'https://api.darksky.net/forecast/55801beea814ed1f3aeed49947a5e5bb/';
 
-                  // optional filters we're appending - date range and zip
-                  var filters = pos1 + "," + pos2;
+            // optional filters we're appending - date range and zip
+            var filters = pos1 + "," + pos2;
 
-                  // full URL
-                  var url2 = baseURL + filters;
-                  //var html;
-                  console.log(url2);
+            // full URL
+            var url2 = baseURL + filters;
+            //var html;
+            console.log(url2);
 
-                  $.ajax({
-                    url: url2,
-                    cache: false,
-                    dataType: 'jsonp',
-                    success: function(data) {
-                      $('.cssload-loader').hide()
-                      
-                      
-                      var skycons = new Skycons({
-                        "color": "black",
-                        "resizeClear": true
-                        
-                      });
-                      
-                      //$("#results").append(html);
-                      skycons.add("weather_icon", data.currently.icon);
-                      
-                      $("#weather_icon").fadeIn(1000);
-                      
-                      console.log(data)
-                      $('#weather').html(data.timezone +
-                      '<br>' + '<p>It is currently ' + data.currently.temperature + 'º Fahrenheit</p><div style="font-size:10px">Powered By Darksky</div>') 
-                      $('#weather').css("font-size", "25px");
-                      
-                      
-                      skycons.play();
-                    }
-                  });
-                }
+            $.ajax({
+              url: url2,
+              cache: false,
+              dataType: 'jsonp',
+              success: function(data) {
+                $('.cssload-loader').hide()
 
 
+                var skycons = new Skycons({
+                  "color": "black",
+                  "resizeClear": true
+
+                });
+
+                //$("#results").append(html);
+                skycons.add("weather_icon", data.currently.icon);
+
+                $("#weather_icon").fadeIn(1000);
+
+                console.log(data)
+                $('#weather').html(data.timezone +
+                  '<br>' + '<p>It is currently ' + data.currently.temperature + 'º Fahrenheit</p><div style="font-size:10px">Powered By Darksky</div>')
+                $('#weather').css("font-size", "25px");
 
 
-                $(document).ready((function() {
-                  $('#weather').empty()
-                  $('.cssload-loader').fadeIn(1000)
-                  getLocation()
-                  
+                skycons.play();
+              }
+            });
+          }
 
-                }));
-              </script>
-              <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhQx1wEy9bRGfblYYl6ZKCxocxkIN8Wgc&callback=initMap">
-    </script>
+
+
+
+          $(document).ready((function() {
+            $('#weather').empty()
+            $('.cssload-loader').fadeIn(1000)
+            getLocation()
+
+
+          }));
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhQx1wEy9bRGfblYYl6ZKCxocxkIN8Wgc&callback=initMap">
+        </script>
         <div class="mdl-card on-the-road-again mdl-cell mdl-cell--6-col">
           <!-- Textfield with Floating Label -->
           <div id="texttospeech">
-<h4>Text - To - Speech</h1>
-<form action="#">
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <input class="mdl-textfield__input" type="text" id="voiceIn">
-    <label class="mdl-textfield__label" for="voiceIn">Talk to me!</label>
-    
-  </div>
-  <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="voice">
+            <h4>Text - To - Speech</h1>
+              <form action="#">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                  <input class="mdl-textfield__input" type="text" id="voiceIn">
+                  <label class="mdl-textfield__label" for="voiceIn">Talk to me!</label>
+
+                </div>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="voice">
   Speek
 </button>
-</form>
-<!-- Raised button with ripple -->
+              </form>
+              <!-- Raised button with ripple -->
 
-          <!--<div class=".single-item">
+              <!--<div class=".single-item">
     <div><img src="images/lane1.png"></div>
     <div><img src="images/lane2.png"></div>
     <div><img src="images/lane3.png"></div>
   </div>-->
-<script type="text/javascript">
-    $("#voice").click(function(){
-      //$('.single-item').slick()
-      var voice = $('#voiceIn').val()
-      responsiveVoice.speak(voice, "UK English Male", {volume: 2});
-    });
-  </script>
-  </div>
-         </div>
+              <script type="text/javascript">
+                $("#voice").click(function() {
+                  //$('.single-item').slick()
+                  var voice = $('#voiceIn').val()
+                  responsiveVoice.speak(voice, "UK English Male", {
+                    volume: 2
+                  });
+                });
+              </script>
+          </div>
+        </div>
         <div id='orignews' class="mdl-card amazing mdl-cell mdl-cell--12-col">
           <div class="mdl-color-text--grey" style="margin:30px">
             <h3 style="color:black">News</h3>
-            
-            
+
+
           </div>
           <div class="mdl-card__supporting-text" style="margin-top:0px">
             <div id="newsYork" style="margin-left:15px"></div>
@@ -384,57 +385,57 @@
             var n = d.getMonth();
             var a = n + 1;
             console.log(a)
-var urlNew = "https://api.nytimes.com/svc/archive/v1/2017/" + a  + ".json";
-urlNew += '?' + $.param({
-  'api-key': "12892250905f43b38ea09fbf0982fc77"
-});
-//$('#orignews').css("display","none")
-$.ajax({
-  url: urlNew,
-  method: 'GET',
-}).done(function(result) {
-  console.log(result);
-  for (var i = 0; i < 5; i++) {
+            var urlNew = "https://api.nytimes.com/svc/archive/v1/2017/" + a + ".json";
+            urlNew += '?' + $.param({
+              'api-key': "12892250905f43b38ea09fbf0982fc77"
+            });
+            //$('#orignews').css("display","none")
+            $.ajax({
+              url: urlNew,
+              method: 'GET',
+            }).done(function(result) {
+              console.log(result);
+              for (var i = 0; i < 5; i++) {
                 var data2 = result.response.docs[i]
-                var html4 = 
-                '<div class="mdl-card amazing mdl-cell mdl-cell--12-col">' +
-          '<div class="mdl-color-text--grey" style="margin:30px">' +
-            '<a href="' + data2.web_url + '" style="color:black;font-size:24px">' + data2.headline.main  + '</a>' +
-            '<p>' + data2.byline.original + '</p>' +
-            
-          '</div>' +
-          '<div class="mdl-card__supporting-text" style="margin-top:0px;margin-left:18px">' + 
-            '<div id="newsYork" style="margin-left:18px"><img src="http://www.nytimes.com/' +  data2.multimedia[1].url + '"></div>' +
-          '</div>' + 
-          '<br>'
+                var html4 =
+                  '<div class="mdl-card amazing mdl-cell mdl-cell--12-col">' +
+                  '<div class="mdl-color-text--grey" style="margin:30px">' +
+                  '<a href="' + data2.web_url + '" style="color:black;font-size:24px">' + data2.headline.main + '</a>' +
+                  '<p>' + data2.byline.original + '</p>' +
+
+                  '</div>' +
+                  '<div class="mdl-card__supporting-text" style="margin-top:0px;margin-left:18px">' +
+                  '<div id="newsYork" style="margin-left:18px"><img src="http://www.nytimes.com/' + data2.multimedia[1].url + '"></div>' +
+                  '</div>' +
+                  '<br>'
                 $('#shop').parent().append(html4);
                 $('#orignews').hide()
-                
-                }
-  
-    
-  
-    //Do something
 
-  
-}).fail(function(err) {
-  throw err;
-});
+              }
+
+
+
+              //Do something
+
+
+            }).fail(function(err) {
+              throw err;
+            });
           </script>
-          
+
         </div>
         <div class="mdl-card shopping mdl-cell mdl-cell--12-col" id="shop">
           <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    
-    
+          <div id="map"></div>
+
+
         </div>
         <script>
           //AIzaSyAhQx1wEy9bRGfblYYl6ZKCxocxkIN8Wgc
         </script>
         <nav class="demo-nav mdl-cell mdl-cell--12-col">
           <div class="section-spacer"></div>
-          
+
         </nav>
       </div>
       <footer class="mdl-mini-footer">
@@ -445,8 +446,8 @@ $.ajax({
           <button id="facebook" class="mdl-mini-footer--social-btn social-btn social-btn__blogger">
               <span class="visuallyhidden">Facebook</span>
             </button>
-          
-            <button id="youtube" class="mdl-mini-footer--social-btn social-btn social-btn__youtube" style="background-image:url(https://www.gstatic.com/images/icons/material/system/2x/post_youtube_black_24dp.png)">
+
+          <button id="youtube" class="mdl-mini-footer--social-btn social-btn social-btn__youtube" style="background-image:url(https://www.gstatic.com/images/icons/material/system/2x/post_youtube_black_24dp.png)">
               <span class="visuallyhidden">Youtube</span>
             </button>
         </div>
@@ -466,17 +467,17 @@ $.ajax({
     $('#twitter').click(function() {
       window.location = 'https://twitter.com/zyplos'
     })
-    $('#facebook').click(function () {
+    $('#facebook').click(function() {
       window.location = 'https://www.facebook.com/LaneTechHS/'
     })
     $('#youtube').click(function() {
-        window.location = 'https://www.youtube.com/channel/UCnrqCVMJ5tz7NOvnQkQDwFA'
+      window.location = 'https://www.youtube.com/channel/UCnrqCVMJ5tz7NOvnQkQDwFA'
     })
   </script>
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="slick/slick.min.js"></script>
-			<script src='//vws.responsivevoice.com/v/e?key=7MJGTxUL'></script>	
+  <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
+  <script src='//vws.responsivevoice.com/v/e?key=7MJGTxUL'></script>
 </body>
 <script>
   Array.prototype.forEach.call(document.querySelectorAll('.mdl-card__media'), function(el) {

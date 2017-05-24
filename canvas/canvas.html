@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Simple Example</title>
+    <style>
+        canvas {
+            border: #333 10px solid;
+        }
+    </style>
+
+</head>
+
+<body>
+    <canvas width="750px" height="550px" id="myCanvas" style="background-color:black"></canvas>
+    <script>
+        var canvas = document.querySelector("#myCanvas");
+        var context = canvas.getContext("2d");
+        // draw a diagonal line
+
+        // draw the colored region
+        context.beginPath();
+        context.arc(375, 250, 125, 0, 2 * Math.PI, Math.PI, true);
+        context.fillStyle = 'rgb(255,208,44)';
+        context.fill();
+
+        // draw the stroke
+        context.lineWidth = 20;
+        context.strokeStyle = 'black';
+        context.stroke();
+
+        /*context.beginPath()
+        context.arc(375,175,30,0,2*Math.PI, Math.PI, true)
+        context.fillStyle= 'black'
+        context.fill()
+        context.lineWidth=15
+        context.strokeStyle = 'black'
+        context.stroke()*/
+
+        context.save();
+        context.scale(0.75, 1);
+        context.beginPath();
+        context.arc(435, 200, 12, 0, Math.PI * 2, false);
+        context.fillStyle = 'black'
+        context.fill()
+        context.stroke();
+        context.closePath();
+        context.restore();
+
+
+        context.save();
+        context.scale(0.75, 1);
+        context.beginPath();
+        context.arc(560, 200, 12, 0, Math.PI * 2, false);
+        context.fillStyle = 'black'
+        context.fill()
+        context.stroke();
+        context.closePath();
+        context.restore();
+
+
+        // draw the colored region
+        context.beginPath();
+        context.arc(375, 270, 70, 0, Math.PI, false);
+
+
+
+        // draw the stroke
+        context.lineWidth = 10;
+        context.strokeStyle = "black";
+        context.stroke();
+
+        document.getElementById("myCanvas").addEventListener("dblclick", myScript);
+
+        function myScript() {
+            // draw the colored region
+            context.beginPath();
+            context.arc(375, 250, 125, 0, 2 * Math.PI, Math.PI, true);
+            context.fillStyle = 'rgb(255,208,44)';
+            context.fill();
+
+            // draw the stroke
+            context.lineWidth = 20;
+            context.strokeStyle = 'black';
+            context.stroke();
+
+            context.save();
+            context.scale(0.75, 1);
+            context.beginPath();
+            context.arc(435, 200, 12, 0, Math.PI * 2, false);
+            context.fillStyle = 'black'
+            context.fill()
+            context.stroke();
+            context.closePath();
+            context.restore();
+
+            context.beginPath();
+            context.lineWidth = 10
+            context.arc(375, 270, 70, 0, Math.PI, false);
+            context.stroke()
+
+            context.moveTo(400, 200);
+            context.lineTo(440, 200);
+            context.stroke()
+            setTimeout(function() {
+                context.strokeStyle = 'rgb(255,208,44)'
+                context.moveTo(400, 200);
+                context.lineTo(440, 200);
+                context.stroke()
+                context.strokeStyle = 'black'
+                context.save();
+                context.lineWidth = 20
+                context.scale(0.75, 1);
+                context.beginPath();
+                context.arc(560, 200, 12, 0, Math.PI * 2, false);
+                context.fillStyle = 'black'
+                context.fill()
+                context.stroke();
+                context.closePath();
+                context.restore();
+                context.beginPath();
+                context.lineWidth = 10
+                context.arc(375, 270, 70, 0, Math.PI, false);
+                context.stroke()
+            }, 1000);
+            console.log('you have double clicked and found the easter egg')
+
+            console.log('oh wow')
+        }
+    </script>
+</body>
+
+</html>
